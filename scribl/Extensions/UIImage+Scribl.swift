@@ -15,4 +15,12 @@ extension UIImage {
         return UIImage(named: "draw")
     }
     
+    static func eraserIcon() -> UIImage? {
+        return UIImage(named: "eraser")
+    }
+    
+    static func eraserSelectedIcon() -> UIImage? {
+        return UIImage(named: "eraser-selected")
+    }
+    
 }

@@ -24,6 +24,7 @@
 		DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */; };
 		DE9734A124EA33D400863896 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9734A024EA33D400863896 /* CanvasView.swift */; };
 		DE9734A324EA372000863896 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9734A224EA372000863896 /* ToolbarView.swift */; };
+		DE9734A524EA513C00863896 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9734A424EA513C00863896 /* Stroke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scribl.swift"; sourceTree = "<group>"; };
 		DE9734A024EA33D400863896 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		DE9734A224EA372000863896 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		DE9734A424EA513C00863896 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		DE97349824EA0A3F00863896 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE9734A424EA513C00863896 /* Stroke.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
 				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
+				DE9734A524EA513C00863896 /* Stroke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

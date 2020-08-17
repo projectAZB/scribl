@@ -15,6 +15,7 @@ class GalleryViewController: BaseViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.rowHeight = Dimensions.rowHeight
+        tableView.separatorColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

@@ -20,6 +20,7 @@ class DrawViewController: BaseViewController {
     
     private lazy var toolbarView: ToolbarView = {
         let toolbarView = ToolbarView()
+        toolbarView.delegate = self
         toolbarView.translatesAutoresizingMaskIntoConstraints = false
         return toolbarView
     }()
@@ -66,5 +67,14 @@ class DrawViewController: BaseViewController {
         )
         
     }
+    
+}
+
+extension DrawViewController: ToolbarViewDelegate {
+    
+    func onEraserToggled(on: Bool) {
+        canvasView.strokeColor = on ? .pureWhite() : toolbarView.selectedColor
+    }
+    
     
 }
