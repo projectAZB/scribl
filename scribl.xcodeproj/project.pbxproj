@@ -18,6 +18,12 @@
 		DE97349024E8FEDF00863896 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97348F24E8FEDF00863896 /* DrawViewController.swift */; };
 		DE97349324E902E300863896 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349224E902E300863896 /* GalleryViewModel.swift */; };
 		DE97349524E902F300863896 /* DrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349424E902F300863896 /* DrawViewModel.swift */; };
+		DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349624EA09D100863896 /* UIColor+Scribl.swift */; };
+		DE97349A24EA0F5700863896 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349924EA0F5700863896 /* Constants.swift */; };
+		DE97349C24EA114600863896 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349B24EA114600863896 /* BaseViewController.swift */; };
+		DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */; };
+		DE9734A124EA33D400863896 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9734A024EA33D400863896 /* CanvasView.swift */; };
+		DE9734A324EA372000863896 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9734A224EA372000863896 /* ToolbarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +61,12 @@
 		DE97348F24E8FEDF00863896 /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		DE97349224E902E300863896 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		DE97349424E902F300863896 /* DrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewModel.swift; sourceTree = "<group>"; };
+		DE97349624EA09D100863896 /* UIColor+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Scribl.swift"; sourceTree = "<group>"; };
+		DE97349924EA0F5700863896 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DE97349B24EA114600863896 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scribl.swift"; sourceTree = "<group>"; };
+		DE9734A024EA33D400863896 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		DE9734A224EA372000863896 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +119,15 @@
 			children = (
 				DE97345924E8EFE200863896 /* AppDelegate.swift */,
 				DE97345B24E8EFE200863896 /* SceneDelegate.swift */,
+				DE97349924EA0F5700863896 /* Constants.swift */,
+				DE97349824EA0A3F00863896 /* Models */,
 				DE97348C24E8FD9800863896 /* Views */,
 				DE97349124E902BC00863896 /* ViewModels */,
 				DE97346524E8EFE300863896 /* Assets.xcassets */,
 				DE97346724E8EFE300863896 /* LaunchScreen.storyboard */,
 				DE97346A24E8EFE300863896 /* Info.plist */,
 				DE97346224E8EFE200863896 /* scribl.xcdatamodeld */,
+				DE97349D24EA142D00863896 /* Extensions */,
 			);
 			path = scribl;
 			sourceTree = "<group>";
@@ -138,8 +153,11 @@
 		DE97348C24E8FD9800863896 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE97349B24EA114600863896 /* BaseViewController.swift */,
 				DE97348D24E8FEAF00863896 /* GalleryViewController.swift */,
 				DE97348F24E8FEDF00863896 /* DrawViewController.swift */,
+				DE9734A024EA33D400863896 /* CanvasView.swift */,
+				DE9734A224EA372000863896 /* ToolbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +169,22 @@
 				DE97349424E902F300863896 /* DrawViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DE97349824EA0A3F00863896 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE97349D24EA142D00863896 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE97349624EA09D100863896 /* UIColor+Scribl.swift */,
+				DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,11 +319,17 @@
 			files = (
 				DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */,
 				DE97349324E902E300863896 /* GalleryViewModel.swift in Sources */,
+				DE9734A124EA33D400863896 /* CanvasView.swift in Sources */,
 				DE97348E24E8FEAF00863896 /* GalleryViewController.swift in Sources */,
 				DE97349024E8FEDF00863896 /* DrawViewController.swift in Sources */,
 				DE97349524E902F300863896 /* DrawViewModel.swift in Sources */,
+				DE97349C24EA114600863896 /* BaseViewController.swift in Sources */,
+				DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */,
 				DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */,
+				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
+				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
+				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
