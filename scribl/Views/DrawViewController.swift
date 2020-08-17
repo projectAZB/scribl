@@ -92,4 +92,12 @@ extension DrawViewController: ToolbarViewDelegate {
         canvasView.resetDrawing()
     }
     
+    func onColorSelected(color: UIColor) {
+        canvasView.strokeColor = color
+    }
+    
+    func onWidthSelected(width: CGFloat) {
+        canvasView.strokeWidth = width
+    }
+    
 }

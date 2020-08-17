@@ -17,6 +17,7 @@ struct Dimensions {
     static let margin24 : CGFloat = 24.0
     static let margin32 : CGFloat = 32.0
     static let margin36 : CGFloat = 36.0
+    static let margin64 : CGFloat = 64.0
     static let rowHeight: CGFloat = 64.0
     static let toolbarHeight: CGFloat = 64.0
 }

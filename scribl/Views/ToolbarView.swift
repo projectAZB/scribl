@@ -13,12 +13,29 @@ import UIKit
 protocol ToolbarViewDelegate: class {
     func onEraserToggled(on: Bool)
     func onTrashPressed()
+    func onColorSelected(color: UIColor)
+    func onWidthSelected(width: CGFloat)
 }
 
 
 class ToolbarView: UIView {
     
-    var selectedColor: UIColor = .pureBlack()
+    static let pickerComponentHeight: CGFloat = 24.0
+    static let pickerComponentWidth: CGFloat = 44.0
+    
+    private var colors: [UIColor] = [.pureBlack(), .cadmiumRed(), .violetEggplant(), .yvesBlue(), .zestOrange(), .softGreen()]
+    private var widths: [CGFloat] = [5, 10, 15, 20, 25]
+    
+    var selectedColor: UIColor = .pureBlack() {
+        didSet {
+            delegate?.onColorSelected(color: selectedColor)
+        }
+    }
+    var selectedWidth: CGFloat = 5 {
+        didSet {
+            delegate?.onWidthSelected(width: selectedWidth)
+        }
+    }
     
     weak var delegate: ToolbarViewDelegate? = nil
     
@@ -28,6 +45,14 @@ class ToolbarView: UIView {
             eraserButton.setImage(eraserImage, for: .normal)
         }
     }
+    
+    private lazy var colorPickerView: UIPickerView = {
+        let pickerView = UIPickerView(frame: .zero)
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        return pickerView
+    }()
     
     private lazy var trashButton: UIButton = {
         let trashButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
@@ -49,6 +74,7 @@ class ToolbarView: UIView {
     
     convenience init() {
         self.init(frame: .zero)
+        clipsToBounds = true
         configureUI()
     }
     
@@ -66,11 +92,18 @@ class ToolbarView: UIView {
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
         
+        addSubview(colorPickerView)
         addSubview(trashButton)
+        trashButton.setContentCompressionResistancePriority(.required, for: .horizontal)
         addSubview(eraserButton)
+        eraserButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        colorPickerView.setContentHuggingPriority(.required, for: .horizontal)
         
         NSLayoutConstraint.activate(
             [
+                colorPickerView.leftAnchor.constraint(equalTo: leftAnchor, constant: Dimensions.margin16),
+                colorPickerView.centerYAnchor.constraint(equalTo: centerYAnchor),
+                colorPickerView.rightAnchor.constraint(equalTo: eraserButton.leftAnchor, constant: -Dimensions.margin64),
                 trashButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Dimensions.margin16),
                 trashButton.centerYAnchor.constraint(equalTo: centerYAnchor),
                 eraserButton.rightAnchor.constraint(equalTo: trashButton.leftAnchor, constant: -Dimensions.margin16),
@@ -86,6 +119,76 @@ class ToolbarView: UIView {
     
     @objc func trashButtonPressed() {
         delegate?.onTrashPressed()
+    }
+    
+}
+
+extension ToolbarView: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch component {
+            case 0:
+                return colors.count
+            case 1:
+                return widths.count
+            default:
+                break
+        }
+        return 0
+    }
+    
+    func pickerView(
+        _ pickerView: UIPickerView,
+        viewForRow row: Int,
+        forComponent component: Int,
+        reusing view: UIView?
+    ) -> UIView {
+        switch component
+        {
+            case 0:
+                let color: UIColor = colors[row]
+                let view: UIView = UIView(frame:
+                    CGRect(x: 0.0, y: 0.0, width: ToolbarView.pickerComponentWidth, height: ToolbarView.pickerComponentHeight)
+                )
+                view.backgroundColor = color
+                return view
+            case 1:
+                let width: CGFloat = widths[row]
+                let label: UILabel = UILabel(frame:
+                    CGRect(x: 0.0, y: 0.0, width: ToolbarView.pickerComponentWidth, height: ToolbarView.pickerComponentHeight)
+                )
+                label.text = "\(width)"
+                label.textColor = .pureBlack()
+                label.textAlignment = .right
+                return label
+            default:
+                break
+        }
+        
+        return UIView()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return ToolbarView.pickerComponentWidth
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return ToolbarView.pickerComponentHeight
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch component {
+            case 0:
+                selectedColor = colors[row]
+            case 1:
+                selectedWidth = widths[row]
+            default:
+                break
+        }
     }
     
 }
