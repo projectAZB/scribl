@@ -15,6 +15,7 @@ protocol ToolbarViewDelegate: class {
     func onTrashPressed()
     func onColorSelected(color: UIColor)
     func onWidthSelected(width: CGFloat)
+    func onPlayPressed(playing: Bool)
 }
 
 
@@ -45,6 +46,24 @@ class ToolbarView: UIView {
             eraserButton.setImage(eraserImage, for: .normal)
         }
     }
+    
+    private var playing: Bool = false {
+        didSet {
+            let image: UIImage? = playing ? .stopIcon() : .playIcon()
+            playButton.setImage(image, for: .normal)
+            delegate?.onPlayPressed(playing: playing)
+        }
+    }
+    
+    private lazy var playButton: UIButton = {
+        let playButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
+        playButton.setImage(.playIcon(), for: .normal)
+        playButton.imageView?.contentMode = .scaleAspectFit
+        playButton.imageEdgeInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
+        playButton.addTarget(self, action: #selector(playButtonPressed), for: .touchUpInside)
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        return playButton
+    }()
     
     private lazy var colorPickerView: UIPickerView = {
         let pickerView = UIPickerView(frame: .zero)
@@ -92,22 +111,25 @@ class ToolbarView: UIView {
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
         
+        addSubview(playButton)
+        playButton.setContentCompressionResistancePriority(.required, for: .horizontal)
         addSubview(colorPickerView)
         addSubview(trashButton)
         trashButton.setContentCompressionResistancePriority(.required, for: .horizontal)
         addSubview(eraserButton)
         eraserButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        colorPickerView.setContentHuggingPriority(.required, for: .horizontal)
         
         NSLayoutConstraint.activate(
             [
                 colorPickerView.leftAnchor.constraint(equalTo: leftAnchor, constant: Dimensions.margin16),
                 colorPickerView.centerYAnchor.constraint(equalTo: centerYAnchor),
-                colorPickerView.rightAnchor.constraint(equalTo: eraserButton.leftAnchor, constant: -Dimensions.margin64),
+                colorPickerView.rightAnchor.constraint(equalTo: centerXAnchor),
                 trashButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Dimensions.margin16),
                 trashButton.centerYAnchor.constraint(equalTo: centerYAnchor),
                 eraserButton.rightAnchor.constraint(equalTo: trashButton.leftAnchor, constant: -Dimensions.margin16),
-                eraserButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+                eraserButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                playButton.rightAnchor.constraint(equalTo: eraserButton.leftAnchor, constant: -Dimensions.margin16),
+                playButton.centerYAnchor.constraint(equalTo: centerYAnchor)
             ]
         )
     }
@@ -119,6 +141,10 @@ class ToolbarView: UIView {
     
     @objc func trashButtonPressed() {
         delegate?.onTrashPressed()
+    }
+    
+    @objc func playButtonPressed() {
+        playing = !playing
     }
     
 }

@@ -31,4 +31,12 @@ extension UIImage {
         return UIImage(named: "save")
     }
     
+    static func playIcon() -> UIImage? {
+        return UIImage(named: "play")
+    }
+    
+    static func stopIcon() -> UIImage? {
+        return UIImage(named: "stop")
+    }
+    
 }

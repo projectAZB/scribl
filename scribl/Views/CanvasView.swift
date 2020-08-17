@@ -21,6 +21,18 @@ class CanvasView: UIView {
     var strokeWidth: CGFloat = 10.0
     var moved = false
     
+    var playing: Bool = false {
+        didSet {
+            editable = !playing
+        }
+    }
+    
+    var editable: Bool = true {
+        didSet {
+            isUserInteractionEnabled = editable
+        }
+    }
+    
     weak var delegate: CanvasViewDelegate? = nil
     
     private lazy var canvasImageView : UIImageView = {

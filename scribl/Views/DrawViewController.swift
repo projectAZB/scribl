@@ -84,6 +84,10 @@ class DrawViewController: BaseViewController {
 
 extension DrawViewController: ToolbarViewDelegate {
     
+    func onPlayPressed(playing: Bool) {
+        canvasView.playing = playing
+    }
+    
     func onEraserToggled(on: Bool) {
         canvasView.strokeColor = on ? .pureWhite() : toolbarView.selectedColor
     }
