@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 
+protocol CanvasViewDelegate: class {
+    func onStrokeEnded(stroke: Stroke)
+}
+
 class CanvasView: UIView {
     
     var lastPoint = CGPoint.zero
-    var brushColor = UIColor.pureBlack()
-    var brushWidth: CGFloat = 10.0
+    var lastStroke: Stroke? = nil
+    var strokeColor = UIColor.pureBlack()
+    var strokeWidth: CGFloat = 10.0
     var moved = false
+    
+    weak var delegate: CanvasViewDelegate? = nil
     
     private lazy var canvasImageView : UIImageView = {
         let canvasImageView = UIImageView()
@@ -82,17 +89,25 @@ class CanvasView: UIView {
         context.addLine(to: toPoint)
         context.setLineCap(.round)
         context.setBlendMode(.normal)
-        context.setLineWidth(brushWidth)
-        context.setStrokeColor(brushColor.cgColor)
+        context.setLineWidth(strokeWidth)
+        context.setStrokeColor(strokeColor.cgColor)
         context.strokePath()
         canvasImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        lastStroke = Stroke(
+            fromPoint: fromPoint,
+            toPoint: toPoint,
+            width: strokeWidth,
+            color: strokeColor
+        )
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !moved {
             drawLine(from: lastPoint, to: lastPoint)
         }
+        delegate?.onStrokeEnded(stroke: lastStroke!)
     }
     
 }
