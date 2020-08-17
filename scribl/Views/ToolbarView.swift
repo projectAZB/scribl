@@ -12,6 +12,7 @@ import UIKit
 
 protocol ToolbarViewDelegate: class {
     func onEraserToggled(on: Bool)
+    func onTrashPressed()
 }
 
 
@@ -27,6 +28,15 @@ class ToolbarView: UIView {
             eraserButton.setImage(eraserImage, for: .normal)
         }
     }
+    
+    private lazy var trashButton: UIButton = {
+        let trashButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
+        trashButton.setImage(.trashIcon(), for: .normal)
+        trashButton.imageEdgeInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
+        trashButton.addTarget(self, action: #selector(trashButtonPressed), for: .touchUpInside)
+        trashButton.translatesAutoresizingMaskIntoConstraints = false
+        return trashButton
+    }()
     
     private lazy var eraserButton: UIButton = {
         let eraserButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
@@ -56,11 +66,14 @@ class ToolbarView: UIView {
         layer.cornerRadius = 4.0
         layer.borderWidth = 1.0
         
+        addSubview(trashButton)
         addSubview(eraserButton)
         
         NSLayoutConstraint.activate(
             [
-                eraserButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Dimensions.margin16),
+                trashButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Dimensions.margin16),
+                trashButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+                eraserButton.rightAnchor.constraint(equalTo: trashButton.leftAnchor, constant: -Dimensions.margin16),
                 eraserButton.centerYAnchor.constraint(equalTo: centerYAnchor)
             ]
         )
@@ -69,6 +82,10 @@ class ToolbarView: UIView {
     @objc func eraserButtonPressed() {
         eraserOn = !eraserOn
         delegate?.onEraserToggled(on: eraserOn)
+    }
+    
+    @objc func trashButtonPressed() {
+        delegate?.onTrashPressed()
     }
     
 }

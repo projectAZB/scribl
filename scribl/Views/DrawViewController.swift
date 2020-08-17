@@ -26,8 +26,16 @@ class DrawViewController: BaseViewController {
     }()
     
     override func configureUI() {
-        title = "Draw"
+        title = "Canvas"
         view.backgroundColor = .pureWhite()
+        
+        let button = UIBarButtonItem(
+            image: .saveIcon(),
+            style: UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(onSavePressed)
+        )
+        navigationItem.rightBarButtonItem = button
         
         view.addSubview(toolbarView)
         view.addSubview(canvasView)
@@ -68,6 +76,10 @@ class DrawViewController: BaseViewController {
         
     }
     
+    @objc func onSavePressed() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension DrawViewController: ToolbarViewDelegate {
@@ -76,5 +88,8 @@ extension DrawViewController: ToolbarViewDelegate {
         canvasView.strokeColor = on ? .pureWhite() : toolbarView.selectedColor
     }
     
+    func onTrashPressed() {
+        canvasView.resetDrawing()
+    }
     
 }

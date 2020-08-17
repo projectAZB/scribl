@@ -61,6 +61,10 @@ class CanvasView: UIView {
         )
     }
     
+    func resetDrawing() {
+        canvasImageView.image = nil
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {
             return

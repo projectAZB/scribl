@@ -23,4 +23,12 @@ extension UIImage {
         return UIImage(named: "eraser-selected")
     }
     
+    static func trashIcon() -> UIImage? {
+        return UIImage(named: "trash")
+    }
+    
+    static func saveIcon() -> UIImage? {
+        return UIImage(named: "save")
+    }
+    
 }
