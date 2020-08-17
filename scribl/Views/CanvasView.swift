@@ -11,12 +11,21 @@ import UIKit
 
 class CanvasView: UIView {
     
+    var lastPoint = CGPoint.zero
+    var brushColor = UIColor.pureBlack()
+    var brushWidth: CGFloat = 10.0
+    var moved = false
+    
+    private lazy var canvasImageView : UIImageView = {
+        let canvasImageView = UIImageView()
+        canvasImageView.translatesAutoresizingMaskIntoConstraints = false
+        return canvasImageView
+    }()
+    
     convenience init() {
         self.init(frame: .zero)
-        layer.borderColor = UIColor.pureBlack().cgColor
-        layer.cornerRadius = 4.0
-        layer.borderWidth = 1.0
-        backgroundColor = .pureWhite()
+        isUserInteractionEnabled = true
+        configureUI()
     }
     
     override init(frame: CGRect) {
@@ -25,6 +34,65 @@ class CanvasView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    private func configureUI() {
+        layer.borderColor = UIColor.pureBlack().cgColor
+        layer.cornerRadius = 4.0
+        layer.borderWidth = 1.0
+        backgroundColor = .pureWhite()
+        
+        self.addSubview(canvasImageView)
+        
+        NSLayoutConstraint.activate(
+            [
+                canvasImageView.leftAnchor.constraint(equalTo: leftAnchor),
+                canvasImageView.topAnchor.constraint(equalTo: topAnchor),
+                canvasImageView.rightAnchor.constraint(equalTo: rightAnchor),
+                canvasImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ]
+        )
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        moved = false
+        lastPoint = touch.location(in: self)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        moved = true
+        let currentPoint = touch.location(in: self)
+        drawLine(from: lastPoint, to: currentPoint)
+        lastPoint = currentPoint
+    }
+    
+    private func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
+        UIGraphicsBeginImageContext(self.frame.size)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        canvasImageView.image?.draw(in: bounds)
+        context.move(to: fromPoint)
+        context.addLine(to: toPoint)
+        context.setLineCap(.round)
+        context.setBlendMode(.normal)
+        context.setLineWidth(brushWidth)
+        context.setStrokeColor(brushColor.cgColor)
+        context.strokePath()
+        canvasImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !moved {
+            drawLine(from: lastPoint, to: lastPoint)
+        }
     }
     
 }

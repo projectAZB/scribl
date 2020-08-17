@@ -42,19 +42,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func configureNavBarAppearance(navController: UINavigationController) {
         navController.navigationBar.prefersLargeTitles = true
         navController.navigationBar.tintColor = .pureBlack()
-        if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithDefaultBackground()
-            navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            navBarAppearance.backgroundColor = .whiteLilac()
-            
-            navController.navigationBar.standardAppearance = navBarAppearance
-            navController.navigationBar.scrollEdgeAppearance = navBarAppearance
-        }
-        else {
-            navController.navigationBar.backgroundColor = .whiteLilac()
-        }
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithDefaultBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navBarAppearance.backgroundColor = .whiteLilac()
+        navController.navigationBar.standardAppearance = navBarAppearance
+        navController.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
 
 
