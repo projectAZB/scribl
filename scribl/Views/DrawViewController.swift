@@ -96,6 +96,7 @@ class DrawViewController: BaseViewController, ViewModelBindable {
     }
     
     @objc func onSavePressed() {
+        viewModel.saveDrawing()
         navigationController?.popViewController(animated: true)
     }
     
@@ -109,7 +110,7 @@ extension DrawViewController: CanvasViewDelegate {
     
     
     func onStrokeEnded(stroke: Stroke) {
-        viewModel.addStroke(stroke: stroke)
+        viewModel.drawing.addStroke(stroke)
     }
     
 }
@@ -119,7 +120,7 @@ extension DrawViewController: ToolbarViewDelegate {
     func onPlayPressed(playing: Bool) {
         canvasView.playing = playing
         if playing {
-            canvasView.playDrawing(strokes: viewModel.canvasStrokes)
+            canvasView.playDrawing(viewModel.drawing)
         }
     }
     
@@ -129,7 +130,7 @@ extension DrawViewController: ToolbarViewDelegate {
     
     func onTrashPressed() {
         canvasView.resetDrawing()
-        viewModel.resetCanvas()
+        viewModel.drawing.reset()
     }
     
     func onColorSelected(color: UIColor) {

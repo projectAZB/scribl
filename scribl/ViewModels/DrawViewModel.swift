@@ -10,14 +10,11 @@ import Foundation
 
 class DrawViewModel: BaseViewModel {
     
-    var canvasStrokes: [Stroke] = []
+    var drawing: Drawing = Drawing()
     
-    func addStroke(stroke: Stroke) {
-        canvasStrokes.append(stroke)
-    }
-    
-    func resetCanvas() {
-        canvasStrokes.removeAll()
+    func saveDrawing() {
+        // If there are strokes, save the drawing to the singleton
+        Singleton.shared.drawings.append(drawing)
     }
     
 }

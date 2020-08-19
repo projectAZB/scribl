@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE763EAB24EB7AB200153316 /* BaseViewModel.swift */; };
+		DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433424EDA07E0020A7FD /* Singleton.swift */; };
+		DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433624EDA0E50020A7FD /* Drawing.swift */; };
 		DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345924E8EFE200863896 /* AppDelegate.swift */; };
 		DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345B24E8EFE200863896 /* SceneDelegate.swift */; };
 		DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE97346224E8EFE200863896 /* scribl.xcdatamodeld */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		DE763EAB24EB7AB200153316 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		DE7E433424EDA07E0020A7FD /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		DE7E433624EDA0E50020A7FD /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				DE97345924E8EFE200863896 /* AppDelegate.swift */,
 				DE97345B24E8EFE200863896 /* SceneDelegate.swift */,
 				DE97349924EA0F5700863896 /* Constants.swift */,
+				DE7E433424EDA07E0020A7FD /* Singleton.swift */,
 				DE97349824EA0A3F00863896 /* Models */,
 				DE97348C24E8FD9800863896 /* Views */,
 				DE97349124E902BC00863896 /* ViewModels */,
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9734A424EA513C00863896 /* Stroke.swift */,
+				DE7E433624EDA0E50020A7FD /* Drawing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */,
+				DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */,
 				DE97349324E902E300863896 /* GalleryViewModel.swift in Sources */,
 				DE9734A124EA33D400863896 /* CanvasView.swift in Sources */,
 				DE97348E24E8FEAF00863896 /* GalleryViewController.swift in Sources */,
@@ -336,6 +343,7 @@
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */,
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
+				DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */,
 				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
 				DE9734A524EA513C00863896 /* Stroke.swift in Sources */,
 			);

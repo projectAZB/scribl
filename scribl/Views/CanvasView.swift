@@ -119,11 +119,12 @@ class CanvasView: UIView {
         }
     }
     
-    func playDrawing(strokes: [Stroke]) {
+    func playDrawing(_ drawing: Drawing) {
         resetDrawing()
         var animationInterval: TimeInterval = 0.0
-        for index in 0..<strokes.count {
-            let stroke = strokes[index]
+        let strokeCount: Int = drawing.strokes.count
+        for index in 0..<strokeCount {
+            let stroke = drawing.strokes[index]
             
             let shapeLayer = shapeLayerFromStroke(stroke: stroke, strokeEnd: 0.0)
             
@@ -136,7 +137,7 @@ class CanvasView: UIView {
             animation.beginTime = CACurrentMediaTime() + animationInterval
             animationInterval += stroke.duration
             
-            if index == strokes.count - 1 {
+            if index == strokeCount - 1 {
                 setLastAnimation(animation)
             }
             
