@@ -15,4 +15,5 @@ struct Stroke {
     let toPoint: CGPoint
     let width: CGFloat
     let color: UIColor
+    let duration: TimeInterval
 }

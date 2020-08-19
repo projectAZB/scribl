@@ -10,10 +10,24 @@ import Foundation
 import UIKit
 
 
-class DrawViewController: BaseViewController {
+class DrawViewController: BaseViewController, ViewModelBindable {
+    
+    var viewModel: DrawViewModel {
+        get {
+            guard let drawViewModel: DrawViewModel = baseViewModel as? DrawViewModel else {
+                fatalError("ViewModel isn't a DrawViewModel")
+            }
+            return drawViewModel
+        }
+    }
+    
+    static func newInstance(drawViewModel: DrawViewModel) -> DrawViewController {
+        return DrawViewController(viewModel: drawViewModel)
+    }
     
     private lazy var canvasView: CanvasView = {
         let canvasView = CanvasView()
+        canvasView.delegate = self
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         return canvasView
     }()
@@ -82,10 +96,26 @@ class DrawViewController: BaseViewController {
     
 }
 
+extension DrawViewController: CanvasViewDelegate {
+    
+    func onPlayDrawingEnded() {
+        toolbarView.playButtonPressed()
+    }
+    
+    
+    func onStrokeEnded(stroke: Stroke) {
+        viewModel.addStroke(stroke: stroke)
+    }
+    
+}
+
 extension DrawViewController: ToolbarViewDelegate {
     
     func onPlayPressed(playing: Bool) {
         canvasView.playing = playing
+        if playing {
+            canvasView.playDrawing(strokes: viewModel.canvasStrokes)
+        }
     }
     
     func onEraserToggled(on: Bool) {
@@ -94,6 +124,7 @@ extension DrawViewController: ToolbarViewDelegate {
     
     func onTrashPressed() {
         canvasView.resetDrawing()
+        viewModel.resetCanvas()
     }
     
     func onColorSelected(color: UIColor) {

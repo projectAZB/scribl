@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class DrawViewModel: BaseViewModel {
+    
+    var canvasStrokes: [Stroke] = []
+    
+    func addStroke(stroke: Stroke) {
+        canvasStrokes.append(stroke)
+    }
+    
+    func resetCanvas() {
+        canvasStrokes.removeAll()
+    }
+    
+}

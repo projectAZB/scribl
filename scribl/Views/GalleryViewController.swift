@@ -10,7 +10,16 @@ import Foundation
 import UIKit
 
 
-class GalleryViewController: BaseViewController {
+class GalleryViewController: BaseViewController, ViewModelBindable {
+    
+    var viewModel: GalleryViewModel {
+        get {
+            guard let galleryViewModel = baseViewModel as? GalleryViewModel else {
+                fatalError("ViewModel isn't a GalleryViewModel")
+            }
+            return galleryViewModel
+        }
+    }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -46,7 +55,10 @@ class GalleryViewController: BaseViewController {
     }
     
     @objc private func onDrawTapped() {
-        self.navigationController?.pushViewController(DrawViewController(), animated: true)
+        self.navigationController?.pushViewController(
+            DrawViewController.newInstance(drawViewModel: DrawViewModel()),
+            animated: true
+        )
     }
     
 }
