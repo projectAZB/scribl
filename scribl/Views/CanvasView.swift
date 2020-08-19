@@ -11,6 +11,7 @@ import UIKit
 
 protocol CanvasViewDelegate: class {
     func onStrokeEnded(stroke: Stroke)
+    func onPlayDrawingEnded()
 }
 
 class CanvasView: UIView {
@@ -120,7 +121,8 @@ class CanvasView: UIView {
     func playDrawing(strokes: [Stroke]) {
         resetDrawing()
         var animationInterval: TimeInterval = 0.0
-        for stroke in strokes {
+        for index in 0..<strokes.count {
+            let stroke = strokes[index]
             let path = UIBezierPath()
             path.move(to: stroke.fromPoint)
             path.addLine(to: stroke.toPoint)
@@ -141,6 +143,10 @@ class CanvasView: UIView {
             animation.duration = stroke.duration
             animation.beginTime = CACurrentMediaTime() + animationInterval
             animationInterval += stroke.duration
+            
+            if index == strokes.count - 1 {
+                animation.delegate = self
+            }
             
             canvasImageView.layer.addSublayer(shapeLayer)
             
@@ -164,6 +170,14 @@ class CanvasView: UIView {
     
     func drawStroke(stroke: Stroke) {
         canvasImageView.layer.addSublayer(shapeLayerFromStroke(stroke: stroke))
+    }
+    
+}
+
+extension CanvasView: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        delegate?.onPlayDrawingEnded()
     }
     
 }
