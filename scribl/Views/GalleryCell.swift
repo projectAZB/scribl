@@ -12,7 +12,11 @@ import UIKit
 
 class GalleryCell: UICollectionViewCell {
     
-    private var drawing: Drawing?
+    var drawing: Drawing? {
+        didSet {
+            drawing?.render(inView: canvasImageView)
+        }
+    }
     
     private lazy var canvasImageView: UIImageView = {
         let canvasImageView = UIImageView()
@@ -24,10 +28,10 @@ class GalleryCell: UICollectionViewCell {
         return canvasImageView
     }()
     
-    convenience init(drawing: Drawing) {
-        self.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
         
-        
+        backgroundColor = .pureWhite()
         
         contentView.addSubview(canvasImageView)
         
@@ -39,10 +43,6 @@ class GalleryCell: UICollectionViewCell {
                 canvasImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ]
         )
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
     }
     
     required init?(coder: NSCoder) {

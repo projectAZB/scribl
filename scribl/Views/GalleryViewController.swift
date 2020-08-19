@@ -25,7 +25,11 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: "gallery_cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
+        collectionView.delegate = self
+        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -54,6 +58,11 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         )
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     @objc private func onDrawTapped() {
         self.navigationController?.pushViewController(
             DrawViewController.newInstance(drawViewModel: DrawViewModel()),
@@ -64,14 +73,42 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
 }
 
 
-extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let cellWidth: CGFloat = (collectionView.bounds.width / 2) - Dimensions.margin16
+        let cellHeight: CGFloat = cellWidth * 1.25
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return UIEdgeInsets(top: Dimensions.margin8, left: Dimensions.margin8, bottom: Dimensions.margin8, right: Dimensions.margin8)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return Dimensions.margin8
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.drawings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let galleryCell: GalleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "gallery_cell", for: indexPath) as! GalleryCell
+        galleryCell.drawing = viewModel.drawings[indexPath.row]
+        return galleryCell
     }
     
 }
