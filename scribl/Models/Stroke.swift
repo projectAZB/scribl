@@ -35,9 +35,6 @@ struct Stroke {
     }
     
     func shapeLayer(inView view: UIView, strokeEnd: CGFloat = 1.0) -> CAShapeLayer {
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
-        
         let path = UIBezierPath()
         path.move(to: CGPoint(x: fromPoint.x * view.bounds.width, y: fromPoint.y * view.bounds.height))
         path.addLine(to: CGPoint(x: toPoint.x * view.bounds.width, y: toPoint.y * view.bounds.height))

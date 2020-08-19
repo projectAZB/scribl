@@ -107,6 +107,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let galleryCell: GalleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "gallery_cell", for: indexPath) as! GalleryCell
+        galleryCell.layoutIfNeeded()
         galleryCell.drawing = viewModel.drawings[indexPath.row]
         return galleryCell
     }
