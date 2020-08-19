@@ -165,6 +165,10 @@ class CanvasView: UIView {
         canvasImageView.layer.addSublayer(shapeLayerFromStroke(stroke: stroke))
     }
     
+    func cleanup() {
+        canvasImageView.layer.sublayers?.removeAll()
+    }
+    
     func setLastAnimation(_ animation: CAAnimation) {
         lastAnimation = animation
         lastAnimation!.delegate = self

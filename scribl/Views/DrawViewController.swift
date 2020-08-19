@@ -90,6 +90,11 @@ class DrawViewController: BaseViewController, ViewModelBindable {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        canvasView.cleanup()
+    }
+    
     @objc func onSavePressed() {
         navigationController?.popViewController(animated: true)
     }
