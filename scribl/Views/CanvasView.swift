@@ -16,6 +16,7 @@ protocol CanvasViewDelegate: class {
 
 class CanvasView: UIView {
     
+    var lastAnimation: CAAnimation?
     var lastPointTime: Date?
     var lastPoint = CGPoint.zero
     var lastStroke: Stroke? = nil
@@ -123,17 +124,8 @@ class CanvasView: UIView {
         var animationInterval: TimeInterval = 0.0
         for index in 0..<strokes.count {
             let stroke = strokes[index]
-            let path = UIBezierPath()
-            path.move(to: stroke.fromPoint)
-            path.addLine(to: stroke.toPoint)
             
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.strokeColor = stroke.color.cgColor
-            shapeLayer.lineWidth = stroke.width
-            shapeLayer.strokeEnd = 0.0
-            shapeLayer.path = path.cgPath
-            shapeLayer.lineCap = .round
+            let shapeLayer = shapeLayerFromStroke(stroke: stroke, strokeEnd: 0.0)
             
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.fromValue = 0.0
@@ -145,7 +137,7 @@ class CanvasView: UIView {
             animationInterval += stroke.duration
             
             if index == strokes.count - 1 {
-                animation.delegate = self
+                setLastAnimation(animation)
             }
             
             canvasImageView.layer.addSublayer(shapeLayer)
@@ -154,7 +146,7 @@ class CanvasView: UIView {
         }
     }
     
-    func shapeLayerFromStroke(stroke: Stroke) -> CAShapeLayer {
+    func shapeLayerFromStroke(stroke: Stroke, strokeEnd: CGFloat = 1.0) -> CAShapeLayer {
         let path = UIBezierPath()
         path.move(to: stroke.fromPoint)
         path.addLine(to: stroke.toPoint)
@@ -165,11 +157,22 @@ class CanvasView: UIView {
         shapeLayer.lineWidth = stroke.width
         shapeLayer.path = path.cgPath
         shapeLayer.lineCap = .round
+        shapeLayer.strokeEnd = strokeEnd
         return shapeLayer
     }
     
     func drawStroke(stroke: Stroke) {
         canvasImageView.layer.addSublayer(shapeLayerFromStroke(stroke: stroke))
+    }
+    
+    func setLastAnimation(_ animation: CAAnimation) {
+        lastAnimation = animation
+        lastAnimation!.delegate = self
+    }
+    
+    func removeLastAnimationDelegate() {
+        lastAnimation?.delegate = nil
+        lastAnimation = nil
     }
     
 }
@@ -178,6 +181,7 @@ extension CanvasView: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         delegate?.onPlayDrawingEnded()
+        removeLastAnimationDelegate()
     }
     
 }
