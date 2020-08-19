@@ -102,9 +102,10 @@ class CanvasView: UIView {
     }
     
     private func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
-        lastStroke = Stroke(
-            fromPoint: fromPoint,
-            toPoint: toPoint,
+        lastStroke = Stroke.newInstance(
+            inView: self,
+            absoluteFromPoint: fromPoint,
+            absoluteToPoint: toPoint,
             width: strokeWidth,
             color: strokeColor,
             duration: Date().timeIntervalSince(lastPointTime!)
@@ -126,7 +127,7 @@ class CanvasView: UIView {
         for index in 0..<strokeCount {
             let stroke = drawing.strokes[index]
             
-            let shapeLayer = stroke.shapeLayer(strokeEnd: 0.0)
+            let shapeLayer = stroke.shapeLayer(inView: self, strokeEnd: 0.0)
             
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.fromValue = 0.0
@@ -148,7 +149,7 @@ class CanvasView: UIView {
     }
     
     func drawStroke(stroke: Stroke) {
-        canvasImageView.layer.addSublayer(stroke.shapeLayer())
+        stroke.draw(inView: canvasImageView)
     }
     
     func cleanup() {

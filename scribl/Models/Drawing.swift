@@ -21,8 +21,7 @@ struct Drawing {
     
     func render(inView view: UIView) {
         for stroke in strokes {
-            let shapeLayer: CAShapeLayer = stroke.shapeLayer()
-            view.layer.addSublayer(shapeLayer)
+            stroke.draw(inView: view)
         }
     }
     
