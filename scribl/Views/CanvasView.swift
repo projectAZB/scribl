@@ -126,7 +126,7 @@ class CanvasView: UIView {
         for index in 0..<strokeCount {
             let stroke = drawing.strokes[index]
             
-            let shapeLayer = shapeLayerFromStroke(stroke: stroke, strokeEnd: 0.0)
+            let shapeLayer = stroke.shapeLayer(strokeEnd: 0.0)
             
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.fromValue = 0.0
@@ -147,23 +147,8 @@ class CanvasView: UIView {
         }
     }
     
-    func shapeLayerFromStroke(stroke: Stroke, strokeEnd: CGFloat = 1.0) -> CAShapeLayer {
-        let path = UIBezierPath()
-        path.move(to: stroke.fromPoint)
-        path.addLine(to: stroke.toPoint)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = stroke.color.cgColor
-        shapeLayer.lineWidth = stroke.width
-        shapeLayer.path = path.cgPath
-        shapeLayer.lineCap = .round
-        shapeLayer.strokeEnd = strokeEnd
-        return shapeLayer
-    }
-    
     func drawStroke(stroke: Stroke) {
-        canvasImageView.layer.addSublayer(shapeLayerFromStroke(stroke: stroke))
+        canvasImageView.layer.addSublayer(stroke.shapeLayer())
     }
     
     func cleanup() {

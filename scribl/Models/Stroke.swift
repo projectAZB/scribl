@@ -16,4 +16,19 @@ struct Stroke {
     let width: CGFloat
     let color: UIColor
     let duration: TimeInterval
+    
+    func shapeLayer(strokeEnd: CGFloat = 1.0) -> CAShapeLayer {
+        let path = UIBezierPath()
+        path.move(to: self.fromPoint)
+        path.addLine(to: self.toPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = self.color.cgColor
+        shapeLayer.lineWidth = self.width
+        shapeLayer.path = path.cgPath
+        shapeLayer.lineCap = .round
+        shapeLayer.strokeEnd = strokeEnd
+        return shapeLayer
+    }
 }

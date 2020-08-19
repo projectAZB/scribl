@@ -10,6 +10,8 @@ import Foundation
 
 class GalleryViewModel: BaseViewModel {
     
-    
+    var drawings: [Drawing] {
+        return Singleton.shared.drawings
+    }
     
 }

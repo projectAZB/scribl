@@ -21,12 +21,12 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         }
     }
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.rowHeight = Dimensions.rowHeight
-        tableView.separatorColor = .clear
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     
     override func configureUI() {
@@ -42,14 +42,14 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         
         
         view.backgroundColor = .white
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
         
         NSLayoutConstraint.activate(
             [
-                tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-                tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+                collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+                collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ]
         )
     }
@@ -59,6 +59,19 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
             DrawViewController.newInstance(drawViewModel: DrawViewModel()),
             animated: true
         )
+    }
+    
+}
+
+
+extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.drawings.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
     
 }

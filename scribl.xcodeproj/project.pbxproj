@@ -10,6 +10,7 @@
 		DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE763EAB24EB7AB200153316 /* BaseViewModel.swift */; };
 		DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433424EDA07E0020A7FD /* Singleton.swift */; };
 		DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433624EDA0E50020A7FD /* Drawing.swift */; };
+		DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433824EDA9320020A7FD /* GalleryCell.swift */; };
 		DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345924E8EFE200863896 /* AppDelegate.swift */; };
 		DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345B24E8EFE200863896 /* SceneDelegate.swift */; };
 		DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE97346224E8EFE200863896 /* scribl.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 		DE763EAB24EB7AB200153316 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		DE7E433424EDA07E0020A7FD /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		DE7E433624EDA0E50020A7FD /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
+		DE7E433824EDA9320020A7FD /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				DE97349B24EA114600863896 /* BaseViewController.swift */,
 				DE97348D24E8FEAF00863896 /* GalleryViewController.swift */,
+				DE7E433824EDA9320020A7FD /* GalleryCell.swift */,
 				DE97348F24E8FEDF00863896 /* DrawViewController.swift */,
 				DE9734A024EA33D400863896 /* CanvasView.swift */,
 				DE9734A224EA372000863896 /* ToolbarView.swift */,
@@ -341,6 +344,7 @@
 				DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */,
 				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
+				DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */,
 				DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */,
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
 				DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Drawing {
     
@@ -15,6 +16,13 @@ struct Drawing {
     var totalDuration: TimeInterval {
         return strokes.reduce(0.0) { (result, stroke) -> TimeInterval in
             result + stroke.duration
+        }
+    }
+    
+    func render(inView view: UIView) {
+        for stroke in strokes {
+            let shapeLayer: CAShapeLayer = stroke.shapeLayer()
+            view.layer.addSublayer(shapeLayer)
         }
     }
     
