@@ -13,7 +13,6 @@
 		DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433824EDA9320020A7FD /* GalleryCell.swift */; };
 		DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345924E8EFE200863896 /* AppDelegate.swift */; };
 		DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345B24E8EFE200863896 /* SceneDelegate.swift */; };
-		DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE97346224E8EFE200863896 /* scribl.xcdatamodeld */; };
 		DE97346624E8EFE300863896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE97346524E8EFE300863896 /* Assets.xcassets */; };
 		DE97346924E8EFE300863896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE97346724E8EFE300863896 /* LaunchScreen.storyboard */; };
 		DE97347424E8EFE300863896 /* scriblTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97347324E8EFE300863896 /* scriblTests.swift */; };
@@ -56,7 +55,6 @@
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE97346324E8EFE200863896 /* scribl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = scribl.xcdatamodel; sourceTree = "<group>"; };
 		DE97346524E8EFE300863896 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE97346824E8EFE300863896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE97346A24E8EFE300863896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				DE97346524E8EFE300863896 /* Assets.xcassets */,
 				DE97346724E8EFE300863896 /* LaunchScreen.storyboard */,
 				DE97346A24E8EFE300863896 /* Info.plist */,
-				DE97346224E8EFE200863896 /* scribl.xcdatamodeld */,
 				DE97349D24EA142D00863896 /* Extensions */,
 			);
 			path = scribl;
@@ -341,7 +338,6 @@
 				DE97349524E902F300863896 /* DrawViewModel.swift in Sources */,
 				DE97349C24EA114600863896 /* BaseViewController.swift in Sources */,
 				DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */,
-				DE97346424E8EFE200863896 /* scribl.xcdatamodeld in Sources */,
 				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */,
@@ -670,19 +666,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DE97346224E8EFE200863896 /* scribl.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DE97346324E8EFE200863896 /* scribl.xcdatamodel */,
-			);
-			currentVersion = DE97346324E8EFE200863896 /* scribl.xcdatamodel */;
-			path = scribl.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DE97344E24E8EFE200863896 /* Project object */;
 }
