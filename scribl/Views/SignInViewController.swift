@@ -21,7 +21,10 @@ class SignInViewController: BaseViewController {
         let emailField = UITextField()
         emailField.font = font
         emailField.textContentType = .emailAddress
-        emailField.placeholder = "email"
+        emailField.attributedPlaceholder = NSAttributedString(
+            string: "email",
+            attributes: [NSAttributedString.Key.foregroundColor : UIColor.pureBlack(alpha: 0.5)]
+        )
         emailField.textColor = .pureBlack()
         emailField.translatesAutoresizingMaskIntoConstraints = false
         return emailField
@@ -32,7 +35,10 @@ class SignInViewController: BaseViewController {
         passwordField.font = font
         passwordField.textContentType = .password
         passwordField.isSecureTextEntry = true
-        passwordField.placeholder = "password"
+        passwordField.attributedPlaceholder = NSAttributedString(
+            string: "password",
+            attributes: [NSAttributedString.Key.foregroundColor : UIColor.pureBlack(alpha: 0.5)]
+        )
         passwordField.textColor = .pureBlack()
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         return passwordField

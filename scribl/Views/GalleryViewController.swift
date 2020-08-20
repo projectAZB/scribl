@@ -29,6 +29,7 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: "gallery_cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -52,7 +53,7 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         NSLayoutConstraint.activate(
             [
                 collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-                collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                collectionView.topAnchor.constraint(equalTo: view.topAnchor),
                 collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
                 collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ]
