@@ -15,6 +15,8 @@ protocol GalleryCellDelegate: class {
 
 class GalleryCell: UICollectionViewCell {
     
+    static let identifier: String = "gallery_cell"
+    
     weak var delegate: GalleryCellDelegate? = nil
     
     static let labelHeight: CGFloat = 24.0

@@ -26,7 +26,7 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: "gallery_cell")
+        collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: GalleryCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
@@ -132,7 +132,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let galleryCell: GalleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "gallery_cell", for: indexPath) as! GalleryCell
+        let galleryCell: GalleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.identifier, for: indexPath) as! GalleryCell
         galleryCell.canvasImageView.layer.sublayers?.removeAll()
         galleryCell.layoutIfNeeded()
         galleryCell.drawing = viewModel.drawings[indexPath.row]
