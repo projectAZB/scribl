@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE763EAB24EB7AB200153316 /* BaseViewModel.swift */; };
-		DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433424EDA07E0020A7FD /* Singleton.swift */; };
 		DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433624EDA0E50020A7FD /* Drawing.swift */; };
 		DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433824EDA9320020A7FD /* GalleryCell.swift */; };
 		DE7E433D24EDFB810020A7FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7E433C24EDFB810020A7FD /* GoogleService-Info.plist */; };
@@ -31,6 +30,10 @@
 		DE7E436424EDFD940020A7FD /* abseil.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7E435D24EDFD940020A7FD /* abseil.xcframework */; };
 		DE7E436924EDFF6B0020A7FD /* FirebaseAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7E436724EDFF6B0020A7FD /* FirebaseAuth.xcframework */; };
 		DE7E436A24EDFF6B0020A7FD /* GTMSessionFetcher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7E436824EDFF6B0020A7FD /* GTMSessionFetcher.xcframework */; };
+		DE7E437224EE0FA50020A7FD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437124EE0FA50020A7FD /* UserManager.swift */; };
+		DE7E437424EE12B20020A7FD /* ScriblUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437324EE12B20020A7FD /* ScriblUser.swift */; };
+		DE7E437624EE13720020A7FD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437524EE13710020A7FD /* SignInViewController.swift */; };
+		DE7E437824EE52BB0020A7FD /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437724EE52BB0020A7FD /* DbManager.swift */; };
 		DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345924E8EFE200863896 /* AppDelegate.swift */; };
 		DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345B24E8EFE200863896 /* SceneDelegate.swift */; };
 		DE97346624E8EFE300863896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE97346524E8EFE300863896 /* Assets.xcassets */; };
@@ -69,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		DE763EAB24EB7AB200153316 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		DE7E433424EDA07E0020A7FD /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		DE7E433624EDA0E50020A7FD /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		DE7E433824EDA9320020A7FD /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		DE7E433C24EDFB810020A7FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -94,6 +96,10 @@
 		DE7E436724EDFF6B0020A7FD /* FirebaseAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseAuth.xcframework; sourceTree = "<group>"; };
 		DE7E436824EDFF6B0020A7FD /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
 		DE7E436D24EE00E90020A7FD /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		DE7E437124EE0FA50020A7FD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		DE7E437324EE12B20020A7FD /* ScriblUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriblUser.swift; sourceTree = "<group>"; };
+		DE7E437524EE13710020A7FD /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DE7E437724EE52BB0020A7FD /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,7 +253,8 @@
 				DE97345924E8EFE200863896 /* AppDelegate.swift */,
 				DE97345B24E8EFE200863896 /* SceneDelegate.swift */,
 				DE97349924EA0F5700863896 /* Constants.swift */,
-				DE7E433424EDA07E0020A7FD /* Singleton.swift */,
+				DE7E437124EE0FA50020A7FD /* UserManager.swift */,
+				DE7E437724EE52BB0020A7FD /* DbManager.swift */,
 				DE97349824EA0A3F00863896 /* Models */,
 				DE97348C24E8FD9800863896 /* Views */,
 				DE97349124E902BC00863896 /* ViewModels */,
@@ -289,6 +296,7 @@
 				DE97348F24E8FEDF00863896 /* DrawViewController.swift */,
 				DE9734A024EA33D400863896 /* CanvasView.swift */,
 				DE9734A224EA372000863896 /* ToolbarView.swift */,
+				DE7E437524EE13710020A7FD /* SignInViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9734A424EA513C00863896 /* Stroke.swift */,
+				DE7E437324EE12B20020A7FD /* ScriblUser.swift */,
 				DE7E433624EDA0E50020A7FD /* Drawing.swift */,
 			);
 			path = Models;
@@ -454,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE7E437224EE0FA50020A7FD /* UserManager.swift in Sources */,
 				DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */,
 				DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */,
 				DE97349324E902E300863896 /* GalleryViewModel.swift in Sources */,
@@ -461,16 +471,18 @@
 				DE97348E24E8FEAF00863896 /* GalleryViewController.swift in Sources */,
 				DE97349024E8FEDF00863896 /* DrawViewController.swift in Sources */,
 				DE97349524E902F300863896 /* DrawViewModel.swift in Sources */,
+				DE7E437624EE13720020A7FD /* SignInViewController.swift in Sources */,
 				DE97349C24EA114600863896 /* BaseViewController.swift in Sources */,
 				DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */,
 				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */,
 				DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */,
+				DE7E437824EE52BB0020A7FD /* DbManager.swift in Sources */,
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
-				DE7E433524EDA07E0020A7FD /* Singleton.swift in Sources */,
 				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
 				DE9734A524EA513C00863896 /* Stroke.swift in Sources */,
+				DE7E437424EE12B20020A7FD /* ScriblUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

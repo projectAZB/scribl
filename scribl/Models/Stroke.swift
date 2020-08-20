@@ -49,3 +49,34 @@ struct Stroke {
         return shapeLayer
     }
 }
+
+extension Stroke {
+    
+    static func fromDict(dict: [String: Any]) -> Stroke {
+        let fromPointDict = dict["fromPoint"] as! [String : CGFloat]
+        let toPointDict = dict["toPoint"] as! [String : CGFloat]
+        let width = dict["width"] as! CGFloat
+        let colorDict = dict["color"] as! [String : CGFloat]
+        let duration = dict["duration"] as! TimeInterval
+        
+        return Stroke(
+            fromPoint: CGPoint(x: fromPointDict["x"]!, y: fromPointDict["y"]!),
+            toPoint: CGPoint(x: toPointDict["x"]!, y: toPointDict["y"]!),
+            width: width,
+            color: UIColor(red: colorDict["r"]!, green: colorDict["g"]!, blue: colorDict["b"]!, alpha: 1.0),
+            duration: duration
+        )
+    }
+    
+    func toDict() -> [String: Any] {
+        let rgb = self.color.toRGBTriple()
+        return [
+            "fromPoint": ["x": self.fromPoint.x, "y": self.fromPoint.y],
+            "toPoint": ["x": self.toPoint.x, "y": self.toPoint.y],
+            "width": self.width,
+            "color": ["r": rgb.0, "g": rgb.1, "b": rgb.2],
+            "duration": self.duration
+        ]
+    }
+    
+}

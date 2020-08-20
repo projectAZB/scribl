@@ -17,6 +17,7 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
             guard let galleryViewModel = baseViewModel as? GalleryViewModel else {
                 fatalError("ViewModel isn't a GalleryViewModel")
             }
+            galleryViewModel.delegate = self
             return galleryViewModel
         }
     }
@@ -56,11 +57,17 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
                 collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ]
         )
+        
+        if !UserManager.shared.userSignedIn {
+            navigationController?.present(SignInViewController(), animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
+        if UserManager.shared.userSignedIn {
+            viewModel.getDrawings()
+        }
     }
     
     @objc private func onDrawTapped() {
@@ -68,6 +75,14 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
             DrawViewController.newInstance(drawViewModel: DrawViewModel()),
             animated: true
         )
+    }
+    
+}
+
+extension GalleryViewController: GalleryViewModelDelegate {
+    
+    func onDrawingsLoaded() {
+        self.collectionView.reloadData()
     }
     
 }
@@ -107,9 +122,14 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let galleryCell: GalleryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "gallery_cell", for: indexPath) as! GalleryCell
+        galleryCell.canvasImageView.layer.sublayers?.removeAll()
         galleryCell.layoutIfNeeded()
         galleryCell.drawing = viewModel.drawings[indexPath.row]
         return galleryCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 128.0)
     }
     
 }

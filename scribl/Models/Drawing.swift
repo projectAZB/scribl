@@ -11,7 +11,13 @@ import UIKit
 
 struct Drawing {
     
-    var strokes: [Stroke] = []
+    var strokes: [Stroke]
+    let email: String
+    
+    init(email: String, strokes: [Stroke] = []) {
+        self.email = email
+        self.strokes = strokes
+    }
     
     var totalDuration: TimeInterval {
         return strokes.reduce(0.0) { (result, stroke) -> TimeInterval in
@@ -31,6 +37,27 @@ struct Drawing {
     
     mutating func reset() {
         strokes.removeAll()
+    }
+    
+}
+
+extension Drawing {
+    
+    static func fromDict(dict: [String: Any]) -> Drawing {
+        let email: String = dict["email"] as! String
+        let strokes: [[String: Any]] = dict["strokes"] as! [[String : Any]]
+        return Drawing(email: email, strokes: strokes.map({ (dict) -> Stroke in
+            Stroke.fromDict(dict: dict)
+        }))
+    }
+    
+    func toDict() -> [String: Any] {
+        return [
+            "email": self.email,
+            "strokes": self.strokes.map({ (stroke) -> [String : Any] in
+                stroke.toDict()
+            }),
+        ]
     }
     
 }

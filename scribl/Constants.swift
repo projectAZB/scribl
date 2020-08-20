@@ -21,3 +21,8 @@ struct Dimensions {
     static let rowHeight: CGFloat = 64.0
     static let toolbarHeight: CGFloat = 64.0
 }
+
+struct Keys {
+    static let email = "email"
+    static let password = "password"
+}

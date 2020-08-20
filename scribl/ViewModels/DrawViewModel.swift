@@ -10,11 +10,16 @@ import Foundation
 
 class DrawViewModel: BaseViewModel {
     
-    var drawing: Drawing = Drawing()
+    var drawing: Drawing = Drawing(email: UserManager.shared.userEmail!)
     
     func saveDrawing() {
-        // If there are strokes, save the drawing to the singleton
-        Singleton.shared.drawings.append(drawing)
+        DbManager.shared.db.collection("drawings").addDocument(data: drawing.toDict()) { error in
+            guard error == nil else {
+                print("Error adding document: \(error!.localizedDescription)")
+                return
+            }
+            print("Document added")
+        }
     }
     
 }

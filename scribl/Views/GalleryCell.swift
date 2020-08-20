@@ -18,7 +18,7 @@ class GalleryCell: UICollectionViewCell {
         }
     }
     
-    private lazy var canvasImageView: UIImageView = {
+    lazy var canvasImageView: UIImageView = {
         let canvasImageView = UIImageView()
         canvasImageView.layer.borderColor = UIColor.pureBlack().cgColor
         canvasImageView.layer.cornerRadius = 4.0

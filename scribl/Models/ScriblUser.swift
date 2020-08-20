@@ -1,5 +1,5 @@
 //
-//  Singleton.swift
+//  User.swift
 //  scribl
 //
 //  Created by Adam Bollard on 8/19/20.
@@ -8,10 +8,7 @@
 
 import Foundation
 
-class Singleton {
-    
-    static let shared = Singleton()
-    
-    var drawings: [Drawing] = []
-    
+
+struct ScriblUser {
+    let email: String
 }

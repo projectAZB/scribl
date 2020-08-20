@@ -43,4 +43,16 @@ extension UIColor {
         return UIColor(red: 0.90, green: 0.04, blue: 0.12, alpha: 1.0)
     }
     
+    //Convert UIColor to RGBA String
+    func toRGBTriple()-> (CGFloat, CGFloat, CGFloat) {
+
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return (r, g, b)
+
+    }
+    
 }
