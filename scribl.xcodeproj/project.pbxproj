@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE454AB624EF177500D66A92 /* ScriblUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE454AB524EF177500D66A92 /* ScriblUser.swift */; };
+		DE454AB824EF18EF00D66A92 /* ErrorAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE454AB724EF18EF00D66A92 /* ErrorAlertFactory.swift */; };
 		DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE763EAB24EB7AB200153316 /* BaseViewModel.swift */; };
 		DE7E433724EDA0E50020A7FD /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433624EDA0E50020A7FD /* Drawing.swift */; };
 		DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E433824EDA9320020A7FD /* GalleryCell.swift */; };
@@ -72,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE454AB524EF177500D66A92 /* ScriblUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriblUser.swift; sourceTree = "<group>"; };
+		DE454AB724EF18EF00D66A92 /* ErrorAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertFactory.swift; sourceTree = "<group>"; };
 		DE763EAB24EB7AB200153316 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		DE7E433624EDA0E50020A7FD /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		DE7E433824EDA9320020A7FD /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				DE97349924EA0F5700863896 /* Constants.swift */,
 				DE7E437124EE0FA50020A7FD /* UserManager.swift */,
 				DE7E437724EE52BB0020A7FD /* DbManager.swift */,
+				DE454AB724EF18EF00D66A92 /* ErrorAlertFactory.swift */,
 				DE97349824EA0A3F00863896 /* Models */,
 				DE97348C24E8FD9800863896 /* Views */,
 				DE97349124E902BC00863896 /* ViewModels */,
@@ -317,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				DE9734A424EA513C00863896 /* Stroke.swift */,
+				DE454AB524EF177500D66A92 /* ScriblUser.swift */,
 				DE7E433624EDA0E50020A7FD /* Drawing.swift */,
 			);
 			path = Models;
@@ -476,9 +482,11 @@
 				DE97349524E902F300863896 /* DrawViewModel.swift in Sources */,
 				DE7E437624EE13720020A7FD /* SignInViewController.swift in Sources */,
 				DE97349C24EA114600863896 /* BaseViewController.swift in Sources */,
+				DE454AB824EF18EF00D66A92 /* ErrorAlertFactory.swift in Sources */,
 				DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */,
 				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
 				DE7E437E24EEEEBB0020A7FD /* Date+Scribl.swift in Sources */,
+				DE454AB624EF177500D66A92 /* ScriblUser.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */,
 				DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */,

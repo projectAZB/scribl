@@ -34,7 +34,7 @@ struct Drawing {
     }
     
     var usernameDuration: String {
-        let usernameFromEmail = email.components(separatedBy: "@")[0]
+        let usernameFromEmail = email.components(separatedBy: "@")[0].lowercased()
         let totalDurationRounded = round(100 * totalDuration) / 100
         return "\(usernameFromEmail), \(totalDurationRounded)s"
     }

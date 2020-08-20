@@ -16,8 +16,20 @@ class UserManager {
     
     private var authListener: AuthStateDidChangeListenerHandle?
     
+    private var user: ScriblUser? {
+        set(newValue) {
+            UserDefaults.standard.set(newValue?.email, forKey: Keys.email)
+        }
+        get {
+            if let email = UserDefaults.standard.string(forKey: Keys.email) {
+                return ScriblUser(email: email)
+            }
+            return nil
+        }
+    }
+    
     var userSignedIn: Bool {
-        return Auth.auth().currentUser != nil
+        return Auth.auth().currentUser != nil && user != nil
     }
     
     var userEmail: String? {
@@ -53,6 +65,7 @@ class UserManager {
             completion(false, error!.localizedDescription)
             return
         }
+        self.user = ScriblUser(email: authDataResult!.user.email!)
         completion(true, nil)
     }
 }

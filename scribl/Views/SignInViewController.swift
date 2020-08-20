@@ -59,7 +59,7 @@ class SignInViewController: BaseViewController {
             let passwordText = passwordField.text, passwordText.count >= 6 {
             UserManager.shared.createUser(email: emailText, password: passwordText) { (success, errorMessage) in
                 guard success else {
-                    print("Error: \(errorMessage!)")
+                    self.present(ErrorAlertFactory.create(message: errorMessage!), animated: true, completion: nil)
                     return
                 }
                 self.dismiss(animated: true, completion: nil)
@@ -82,7 +82,7 @@ class SignInViewController: BaseViewController {
             let passwordText = passwordField.text, passwordText.count >= 6 {
             UserManager.shared.signIn(email: emailText, password: passwordText) { (success, errorMessage) in
                 guard success else {
-                    print("Error: \(errorMessage!)")
+                    self.present(ErrorAlertFactory.create(message: errorMessage!), animated: true, completion: nil)
                     return
                 }
                 self.dismiss(animated: true, completion: nil)
