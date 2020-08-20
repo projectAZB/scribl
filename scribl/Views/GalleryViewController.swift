@@ -60,7 +60,9 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
         )
         
         if !UserManager.shared.userSignedIn {
-            navigationController?.present(SignInViewController(), animated: true, completion: nil)
+            let signInViewController = SignInViewController()
+            signInViewController.delegate = self
+            navigationController?.present(signInViewController, animated: true, completion: nil)
         }
     }
     
@@ -76,6 +78,14 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
             DrawViewController.newInstance(drawViewModel: DrawViewModel(type: .create)),
             animated: true
         )
+    }
+    
+}
+
+extension GalleryViewController: SignInViewControllerDelegate {
+    
+    func onSuccessfulSignIn() {
+        viewModel.getDrawings()
     }
     
 }

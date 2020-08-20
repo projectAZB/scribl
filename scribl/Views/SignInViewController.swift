@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
+protocol SignInViewControllerDelegate: class {
+    func onSuccessfulSignIn()
+}
+
 class SignInViewController: BaseViewController {
+    
+    weak var delegate: SignInViewControllerDelegate? = nil
     
     let fieldWidth: CGFloat = 240.0
     let fieldHeight: CGFloat = 44.0
@@ -62,7 +68,9 @@ class SignInViewController: BaseViewController {
                     self.present(ErrorAlertFactory.create(message: errorMessage!), animated: true, completion: nil)
                     return
                 }
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.delegate?.onSuccessfulSignIn()
+                }
             }
         }
     }
@@ -85,7 +93,9 @@ class SignInViewController: BaseViewController {
                     self.present(ErrorAlertFactory.create(message: errorMessage!), animated: true, completion: nil)
                     return
                 }
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.delegate?.onSuccessfulSignIn()
+                }
             }
         }
     }
