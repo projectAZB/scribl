@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+protocol GalleryCellDelegate: class {
+    func onGalleryCellClicked(drawing: Drawing)
+}
 
 class GalleryCell: UICollectionViewCell {
+    
+    weak var delegate: GalleryCellDelegate? = nil
     
     static let labelHeight: CGFloat = 24.0
     let font: UIFont = UIFont(name: "Helvetica-Light", size: 13.0)!
@@ -58,6 +63,9 @@ class GalleryCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onCellTapped))
+        contentView.addGestureRecognizer(tapGesture)
+        
         backgroundColor = .pureWhite()
         
         contentView.addSubview(userDurationLabel)
@@ -82,6 +90,10 @@ class GalleryCell: UICollectionViewCell {
                 dateCreatedLabel.heightAnchor.constraint(equalToConstant: GalleryCell.labelHeight)
             ]
         )
+    }
+    
+    @objc func onCellTapped() {
+        delegate?.onGalleryCellClicked(drawing: drawing!)
     }
     
     required init?(coder: NSCoder) {

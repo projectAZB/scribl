@@ -126,6 +126,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         galleryCell.canvasImageView.layer.sublayers?.removeAll()
         galleryCell.layoutIfNeeded()
         galleryCell.drawing = viewModel.drawings[indexPath.row]
+        galleryCell.delegate = self
         return galleryCell
     }
     
@@ -135,6 +136,17 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         referenceSizeForFooterInSection section: Int
     ) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: Dimensions.margin128)
+    }
+    
+}
+
+extension GalleryViewController: GalleryCellDelegate {
+    
+    func onGalleryCellClicked(drawing: Drawing) {
+        self.navigationController?.pushViewController(
+            DrawViewController.newInstance(drawViewModel: DrawViewModel(drawing: drawing)),
+            animated: true
+        )
     }
     
 }

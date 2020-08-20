@@ -10,7 +10,11 @@ import Foundation
 
 class DrawViewModel: BaseViewModel {
     
-    var drawing: Drawing = Drawing(email: UserManager.shared.userEmail!)
+    var drawing: Drawing
+    
+    init(drawing: Drawing = Drawing(email: UserManager.shared.userEmail!)) {
+        self.drawing = drawing
+    }
     
     func saveDrawing() {
         DbManager.shared.db.collection("drawings").addDocument(data: drawing.toDict()) { error in
