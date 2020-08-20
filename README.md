@@ -4,7 +4,7 @@
 
 The architecture of my application makes use of MVVM as much as possible, allowing the view controllers to act as the view layer concerned only with the display of the data the view models manage. My approach was that each ViewController instance was associated with a respective ViewModel instance that would encapsulate the functionality needed to display data/functionality to the user. Any shared functionality can go in the base classes, and through associated types I am able to simulate abstract class behavior as much as possible through the ViewModelBindable protocol to require a BaseViewController subclass to have a View Model attribute. I was able to attain a pretty clean separation of concerns through this, although in the interest of time I didn't follow the same approach with SignInViewController and used the UserManager directly instead of accessing it via a ViewModel which would be the cleanest/most consistent architecturally speaking.
 
-## Reasoning Behing Technical Choices ##
+## Reasoning Behind Technical Choices ##
 
 I'll start off with the data persistence. First, I had opted to use CoreData to store the data locally, but then after some research found that Firestore has an exceptionally efficient offline data persistence, so I decided to kill two birds with one stone and use Firestore for my offline and remote data persistence layer so that I could focus on refining other functionality. 
 
