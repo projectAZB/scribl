@@ -8,11 +8,17 @@
 
 import Foundation
 
+enum DrawViewType {
+    case create, display
+}
+
 class DrawViewModel: BaseViewModel {
     
+    let type: DrawViewType
     var drawing: Drawing
     
-    init(drawing: Drawing = Drawing(email: UserManager.shared.userEmail!)) {
+    init(type: DrawViewType, drawing: Drawing = Drawing(email: UserManager.shared.userEmail!)) {
+        self.type = type
         self.drawing = drawing
     }
     
@@ -24,6 +30,10 @@ class DrawViewModel: BaseViewModel {
             }
             print("Document added")
         }
+    }
+    
+    func deleteDrawing() {
+        
     }
     
 }

@@ -166,6 +166,11 @@ class CanvasView: UIView {
         lastAnimation = nil
     }
     
+    func render(drawing: Drawing) {
+        canvasImageView.layoutIfNeeded()
+        drawing.render(inView: canvasImageView)
+    }
+    
 }
 
 extension CanvasView: CAAnimationDelegate {

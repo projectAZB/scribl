@@ -73,7 +73,7 @@ class GalleryViewController: BaseViewController, ViewModelBindable {
     
     @objc private func onDrawTapped() {
         self.navigationController?.pushViewController(
-            DrawViewController.newInstance(drawViewModel: DrawViewModel()),
+            DrawViewController.newInstance(drawViewModel: DrawViewModel(type: .create)),
             animated: true
         )
     }
@@ -144,7 +144,7 @@ extension GalleryViewController: GalleryCellDelegate {
     
     func onGalleryCellClicked(drawing: Drawing) {
         self.navigationController?.pushViewController(
-            DrawViewController.newInstance(drawViewModel: DrawViewModel(drawing: drawing)),
+            DrawViewController.newInstance(drawViewModel: DrawViewModel(type: .display, drawing: drawing)),
             animated: true
         )
     }

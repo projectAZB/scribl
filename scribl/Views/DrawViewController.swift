@@ -12,6 +12,8 @@ import UIKit
 
 class DrawViewController: BaseViewController, ViewModelBindable {
     
+    var displayRendered: Bool = false
+    
     var viewModel: DrawViewModel {
         get {
             guard let drawViewModel: DrawViewModel = baseViewModel as? DrawViewModel else {
@@ -28,6 +30,9 @@ class DrawViewController: BaseViewController, ViewModelBindable {
     private lazy var canvasView: CanvasView = {
         let canvasView = CanvasView()
         canvasView.delegate = self
+        if viewModel.type == .display {
+            canvasView.editable = false
+        }
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         return canvasView
     }()
@@ -88,6 +93,14 @@ class DrawViewController: BaseViewController, ViewModelBindable {
             ]
         )
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if viewModel.type == .display && !displayRendered {
+            canvasView.render(drawing: viewModel.drawing)
+            displayRendered = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
