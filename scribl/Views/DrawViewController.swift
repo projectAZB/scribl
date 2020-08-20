@@ -121,6 +121,15 @@ class DrawViewController: BaseViewController, ViewModelBindable {
     }
     
     @objc func onSavePressed() {
+        guard viewModel.drawing.strokes.count > 0 else {
+            // Not a valid drawing since there are no strokes, show error
+            self.present(
+                ErrorAlertFactory.create(message: "No drawing to save, try adding some strokes"),
+                animated: true,
+                completion: nil
+            )
+            return
+        }
         viewModel.saveDrawing()
         navigationController?.popViewController(animated: true)
     }
