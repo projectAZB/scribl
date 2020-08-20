@@ -27,7 +27,7 @@ class GalleryViewModel: BaseViewModel {
                 return
             }
             for document in querySnapshot!.documents {
-                let drawing: Drawing = Drawing.fromDict(dict: document.data())
+                let drawing: Drawing = Drawing.fromDict(documentID: document.documentID, dict: document.data())
                 self.drawings.append(drawing)
             }
             self.delegate?.onDrawingsLoaded()

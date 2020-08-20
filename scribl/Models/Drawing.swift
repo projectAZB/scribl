@@ -13,12 +13,14 @@ struct Drawing {
     
     var strokes: [Stroke]
     let email: String
+    let documentID: String?
     private let date: Date
     
-    init(email: String, date: Date? = nil, strokes: [Stroke] = []) {
+    init(email: String, date: Date? = nil, strokes: [Stroke] = [], documentID: String? = nil) {
         self.email = email
         self.strokes = strokes
         self.date = date ?? Date()
+        self.documentID = documentID
     }
     
     var totalDuration: TimeInterval {
@@ -55,14 +57,14 @@ struct Drawing {
 
 extension Drawing {
     
-    static func fromDict(dict: [String: Any]) -> Drawing {
+    static func fromDict(documentID: String, dict: [String: Any]) -> Drawing {
         let email: String = dict["email"] as! String
         let strokes: [[String: Any]] = dict["strokes"] as! [[String : Any]]
         let dateString: String = dict["date"] as! String
         let date: Date = dateString.toDateFromString()!
         return Drawing(email: email, date: date, strokes: strokes.map({ (dict) -> Stroke in
             Stroke.fromDict(dict: dict)
-        }))
+        }), documentID: documentID)
     }
     
     func toDict() -> [String: Any] {

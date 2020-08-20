@@ -33,7 +33,13 @@ class DrawViewModel: BaseViewModel {
     }
     
     func deleteDrawing() {
-        
+        DbManager.shared.db.collection("drawings").document(drawing.documentID!).delete { (error) in
+            guard error == nil else {
+                print("Error deleting document \(self.drawing.documentID)")
+                return
+            }
+            print("Deleted document \(self.drawing.documentID!)")
+        }
     }
     
 }
