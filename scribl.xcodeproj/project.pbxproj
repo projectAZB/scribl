@@ -31,7 +31,6 @@
 		DE7E436924EDFF6B0020A7FD /* FirebaseAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7E436724EDFF6B0020A7FD /* FirebaseAuth.xcframework */; };
 		DE7E436A24EDFF6B0020A7FD /* GTMSessionFetcher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7E436824EDFF6B0020A7FD /* GTMSessionFetcher.xcframework */; };
 		DE7E437224EE0FA50020A7FD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437124EE0FA50020A7FD /* UserManager.swift */; };
-		DE7E437424EE12B20020A7FD /* ScriblUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437324EE12B20020A7FD /* ScriblUser.swift */; };
 		DE7E437624EE13720020A7FD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437524EE13710020A7FD /* SignInViewController.swift */; };
 		DE7E437824EE52BB0020A7FD /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437724EE52BB0020A7FD /* DbManager.swift */; };
 		DE7E437C24EEEDAA0020A7FD /* String+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437B24EEEDAA0020A7FD /* String+Scribl.swift */; };
@@ -99,7 +98,6 @@
 		DE7E436824EDFF6B0020A7FD /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
 		DE7E436D24EE00E90020A7FD /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		DE7E437124EE0FA50020A7FD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		DE7E437324EE12B20020A7FD /* ScriblUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriblUser.swift; sourceTree = "<group>"; };
 		DE7E437524EE13710020A7FD /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DE7E437724EE52BB0020A7FD /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		DE7E437B24EEEDAA0020A7FD /* String+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Scribl.swift"; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				DE9734A424EA513C00863896 /* Stroke.swift */,
-				DE7E437324EE12B20020A7FD /* ScriblUser.swift */,
 				DE7E433624EDA0E50020A7FD /* Drawing.swift */,
 			);
 			path = Models;
@@ -490,7 +487,6 @@
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
 				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
 				DE9734A524EA513C00863896 /* Stroke.swift in Sources */,
-				DE7E437424EE12B20020A7FD /* ScriblUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
