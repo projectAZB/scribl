@@ -121,6 +121,11 @@ class CanvasView: UIView {
     }
     
     func playDrawing(_ drawing: Drawing) {
+        // If the drawing is empty, call delegate and return
+        if drawing.strokes.count == 0 {
+            delegate?.onPlayDrawingEnded()
+            return
+        }
         resetDrawing()
         var animationInterval: TimeInterval = 0.0
         let strokeCount: Int = drawing.strokes.count
