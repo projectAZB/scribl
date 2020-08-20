@@ -167,6 +167,7 @@ class ToolbarView: UIView {
     
     @objc func playButtonPressed() {
         playing = !playing
+        isUserInteractionEnabled = !playing
     }
     
 }
