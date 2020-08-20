@@ -34,6 +34,8 @@
 		DE7E437424EE12B20020A7FD /* ScriblUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437324EE12B20020A7FD /* ScriblUser.swift */; };
 		DE7E437624EE13720020A7FD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437524EE13710020A7FD /* SignInViewController.swift */; };
 		DE7E437824EE52BB0020A7FD /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437724EE52BB0020A7FD /* DbManager.swift */; };
+		DE7E437C24EEEDAA0020A7FD /* String+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437B24EEEDAA0020A7FD /* String+Scribl.swift */; };
+		DE7E437E24EEEEBB0020A7FD /* Date+Scribl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7E437D24EEEEBB0020A7FD /* Date+Scribl.swift */; };
 		DE97345A24E8EFE200863896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345924E8EFE200863896 /* AppDelegate.swift */; };
 		DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE97345B24E8EFE200863896 /* SceneDelegate.swift */; };
 		DE97346624E8EFE300863896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE97346524E8EFE300863896 /* Assets.xcassets */; };
@@ -100,6 +102,8 @@
 		DE7E437324EE12B20020A7FD /* ScriblUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriblUser.swift; sourceTree = "<group>"; };
 		DE7E437524EE13710020A7FD /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DE7E437724EE52BB0020A7FD /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		DE7E437B24EEEDAA0020A7FD /* String+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Scribl.swift"; sourceTree = "<group>"; };
+		DE7E437D24EEEEBB0020A7FD /* Date+Scribl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Scribl.swift"; sourceTree = "<group>"; };
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				DE97349624EA09D100863896 /* UIColor+Scribl.swift */,
+				DE7E437B24EEEDAA0020A7FD /* String+Scribl.swift */,
+				DE7E437D24EEEEBB0020A7FD /* Date+Scribl.swift */,
 				DE97349E24EA1BBB00863896 /* UIImage+Scribl.swift */,
 			);
 			path = Extensions;
@@ -475,10 +481,12 @@
 				DE97349C24EA114600863896 /* BaseViewController.swift in Sources */,
 				DE97349F24EA1BBB00863896 /* UIImage+Scribl.swift in Sources */,
 				DE97349724EA09D100863896 /* UIColor+Scribl.swift in Sources */,
+				DE7E437E24EEEEBB0020A7FD /* Date+Scribl.swift in Sources */,
 				DE97345C24E8EFE200863896 /* SceneDelegate.swift in Sources */,
 				DE7E433924EDA9320020A7FD /* GalleryCell.swift in Sources */,
 				DE763EAC24EB7AB200153316 /* BaseViewModel.swift in Sources */,
 				DE7E437824EE52BB0020A7FD /* DbManager.swift in Sources */,
+				DE7E437C24EEEDAA0020A7FD /* String+Scribl.swift in Sources */,
 				DE97349A24EA0F5700863896 /* Constants.swift in Sources */,
 				DE9734A324EA372000863896 /* ToolbarView.swift in Sources */,
 				DE9734A524EA513C00863896 /* Stroke.swift in Sources */,

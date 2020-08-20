@@ -96,7 +96,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let cellWidth: CGFloat = (collectionView.bounds.width / 2) - Dimensions.margin16
-        let cellHeight: CGFloat = cellWidth * 1.25
+        let cellHeight: CGFloat = (cellWidth * 1.25) + (GalleryCell.labelHeight * 2)
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
@@ -128,8 +128,12 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
         return galleryCell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 128.0)
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForFooterInSection section: Int
+    ) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: Dimensions.margin128)
     }
     
 }

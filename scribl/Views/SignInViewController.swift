@@ -99,7 +99,7 @@ class SignInViewController: BaseViewController {
         
         NSLayoutConstraint.activate(
             [
-                emailField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -128.0),
+                emailField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -Dimensions.margin128),
                 emailField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 emailField.widthAnchor.constraint(equalToConstant: fieldWidth),
                 emailField.heightAnchor.constraint(equalToConstant: fieldHeight),

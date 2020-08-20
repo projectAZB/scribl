@@ -18,6 +18,7 @@ struct Dimensions {
     static let margin32 : CGFloat = 32.0
     static let margin36 : CGFloat = 36.0
     static let margin64 : CGFloat = 64.0
+    static let margin128: CGFloat = 128.0
     static let rowHeight: CGFloat = 64.0
     static let toolbarHeight: CGFloat = 64.0
 }
@@ -25,4 +26,8 @@ struct Dimensions {
 struct Keys {
     static let email = "email"
     static let password = "password"
+}
+
+struct DateFormats {
+    static let dateTime = "MM-dd-yyyy HH:mm"
 }

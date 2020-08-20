@@ -12,17 +12,29 @@ import UIKit
 struct Drawing {
     
     var strokes: [Stroke]
-    let email: String
+    private let email: String
+    private let date: Date
     
-    init(email: String, strokes: [Stroke] = []) {
+    init(email: String, date: Date? = nil, strokes: [Stroke] = []) {
         self.email = email
         self.strokes = strokes
+        self.date = date ?? Date()
     }
     
     var totalDuration: TimeInterval {
         return strokes.reduce(0.0) { (result, stroke) -> TimeInterval in
             result + stroke.duration
         }
+    }
+    
+    var dateString: String {
+        return date.toDateTimeString()
+    }
+    
+    var usernameDuration: String {
+        let usernameFromEmail = email.components(separatedBy: "@")[0]
+        let totalDurationRounded = round(100 * totalDuration) / 100
+        return "\(usernameFromEmail), \(totalDurationRounded)s"
     }
     
     func render(inView view: UIView) {
@@ -46,7 +58,9 @@ extension Drawing {
     static func fromDict(dict: [String: Any]) -> Drawing {
         let email: String = dict["email"] as! String
         let strokes: [[String: Any]] = dict["strokes"] as! [[String : Any]]
-        return Drawing(email: email, strokes: strokes.map({ (dict) -> Stroke in
+        let dateString: String = dict["date"] as! String
+        let date: Date = dateString.toDateFromString()!
+        return Drawing(email: email, date: date, strokes: strokes.map({ (dict) -> Stroke in
             Stroke.fromDict(dict: dict)
         }))
     }
@@ -57,6 +71,7 @@ extension Drawing {
             "strokes": self.strokes.map({ (stroke) -> [String : Any] in
                 stroke.toDict()
             }),
+            "date": self.date.toDateTimeString()
         ]
     }
     
