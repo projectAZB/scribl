@@ -94,7 +94,6 @@
 		DE7E436724EDFF6B0020A7FD /* FirebaseAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseAuth.xcframework; sourceTree = "<group>"; };
 		DE7E436824EDFF6B0020A7FD /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
 		DE7E436D24EE00E90020A7FD /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		DE7E436E24EE03990020A7FD /* scribl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "scribl-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE97345624E8EFE200863896 /* scribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE97345924E8EFE200863896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE97345B24E8EFE200863896 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,7 +257,6 @@
 				DE7E433C24EDFB810020A7FD /* GoogleService-Info.plist */,
 				DE7E436524EDFE2B0020A7FD /* Firebase.h */,
 				DE7E436D24EE00E90020A7FD /* module.modulemap */,
-				DE7E436E24EE03990020A7FD /* scribl-Bridging-Header.h */,
 				DE97349D24EA142D00863896 /* Extensions */,
 			);
 			path = scribl;
@@ -654,7 +652,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.azb.scribl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "scribl/scribl-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -681,7 +679,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.azb.scribl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "scribl/scribl-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
