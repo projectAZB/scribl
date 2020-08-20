@@ -91,10 +91,15 @@ class ToolbarView: UIView {
         return eraserButton
     }()
     
-    convenience init() {
+    convenience init(type: DrawViewType) {
         self.init(frame: .zero)
         clipsToBounds = true
-        configureUI()
+        switch type {
+            case .create:
+                configureUIForCreate()
+            case .display:
+                configureUIForDisplay()
+        }
     }
     
     override init(frame: CGRect) {
@@ -105,7 +110,7 @@ class ToolbarView: UIView {
         super.init(coder: coder)
     }
     
-    private func configureUI() {
+    private func configureUIForCreate() {
         backgroundColor = .pureWhite()
         layer.borderColor = UIColor.pureBlack().cgColor
         layer.cornerRadius = 4.0
@@ -129,6 +134,23 @@ class ToolbarView: UIView {
                 eraserButton.rightAnchor.constraint(equalTo: trashButton.leftAnchor, constant: -Dimensions.margin16),
                 eraserButton.centerYAnchor.constraint(equalTo: centerYAnchor),
                 playButton.rightAnchor.constraint(equalTo: eraserButton.leftAnchor, constant: -Dimensions.margin16),
+                playButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ]
+        )
+    }
+    
+    private func configureUIForDisplay() {
+        backgroundColor = .pureWhite()
+        layer.borderColor = UIColor.pureBlack().cgColor
+        layer.cornerRadius = 4.0
+        layer.borderWidth = 1.0
+        
+        addSubview(playButton)
+        playButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
+        NSLayoutConstraint.activate(
+            [
+                playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
                 playButton.centerYAnchor.constraint(equalTo: centerYAnchor)
             ]
         )

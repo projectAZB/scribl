@@ -38,7 +38,7 @@ class DrawViewController: BaseViewController, ViewModelBindable {
     }()
     
     private lazy var toolbarView: ToolbarView = {
-        let toolbarView = ToolbarView()
+        let toolbarView = ToolbarView(type: viewModel.type)
         toolbarView.delegate = self
         toolbarView.translatesAutoresizingMaskIntoConstraints = false
         return toolbarView
