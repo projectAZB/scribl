@@ -161,6 +161,10 @@ extension DrawViewController: ToolbarViewDelegate {
         if playing {
             canvasView.playDrawing(viewModel.drawing)
         }
+        // No matter what, if it's in `display` mode, turn userinteraction off
+        if viewModel.type == .display {
+            canvasView.isUserInteractionEnabled = false
+        }
     }
     
     func onEraserToggled(on: Bool) {
