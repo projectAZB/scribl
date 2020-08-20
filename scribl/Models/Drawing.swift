@@ -12,7 +12,7 @@ import UIKit
 struct Drawing {
     
     var strokes: [Stroke]
-    private let email: String
+    let email: String
     private let date: Date
     
     init(email: String, date: Date? = nil, strokes: [Stroke] = []) {

@@ -48,13 +48,25 @@ class DrawViewController: BaseViewController, ViewModelBindable {
         title = "Canvas"
         view.backgroundColor = .pureWhite()
         
-        let button = UIBarButtonItem(
-            image: .saveIcon(),
-            style: UIBarButtonItem.Style.plain,
-            target: self,
-            action: #selector(onSavePressed)
-        )
-        navigationItem.rightBarButtonItem = button
+        if viewModel.type == .display &&
+            viewModel.drawing.email.lowercased() == UserManager.shared.userEmail!.lowercased() {
+            let button = UIBarButtonItem(
+                image: .trashIcon(),
+                style: UIBarButtonItem.Style.plain,
+                target: self,
+                action: #selector(onDeletePressed)
+            )
+            navigationItem.rightBarButtonItem = button
+        }
+        else if viewModel.type == .create {
+            let button = UIBarButtonItem(
+                image: .saveIcon(),
+                style: UIBarButtonItem.Style.plain,
+                target: self,
+                action: #selector(onSavePressed)
+            )
+            navigationItem.rightBarButtonItem = button
+        }
         
         view.addSubview(toolbarView)
         view.addSubview(canvasView)
@@ -110,6 +122,11 @@ class DrawViewController: BaseViewController, ViewModelBindable {
     
     @objc func onSavePressed() {
         viewModel.saveDrawing()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func onDeletePressed() {
+        viewModel.deleteDrawing()
         navigationController?.popViewController(animated: true)
     }
     
